@@ -1,14 +1,27 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useSession, authClient } from "@/lib/auth-client";
+import { signOut } from "@/lib/actions/auth-actions";
+import { auth } from "@/lib/auth";
 
-export default function DashboardClientPage() {
+type Session = typeof auth.$Infer.Session;
+
+export default function DashboardClientPage({
+  session,
+}: {
+  session: Session | null;
+}) {
   const router = useRouter();
+  //const { data: session, isPending } = useSession();
+
+  console.log(session);
 
   // Redirect to auth if not authenticated
 
   const handleSignOut = async () => {
-    alert("Signed out");
+    await signOut();
+    router.push("/auth");
   };
 
   return (

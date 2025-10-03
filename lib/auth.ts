@@ -8,7 +8,7 @@ export const auth = betterAuth({
     provider: "sqlite",
   }),
   secret: process.env.BETTER_AUTH_SECRET!,
-  siteUrl: process.env.BETTER_AUTH_URL!,
+  baseURL: process.env.BETTER_AUTH_URL!,
   emailAndPassword:{
     enabled:true,
   },
